@@ -512,7 +512,8 @@
   []
   [irr_def]
     type = ConstantFunction
-    value = ${irr_value}
+    #value = ${irr_value}
+    value = 2
   []
   [initial_x_def]
     type = ConstantFunction

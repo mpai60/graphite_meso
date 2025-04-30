@@ -599,7 +599,6 @@
       type = ComputeVariableEigenstrain
       block = '800'
       eigen_base = '1 0 0 0 1 0 0 0 1'
-      #eigen_base = '-0.0577 0 0 0 1 0 0 0 1'
       args = 'temp'
       prefactor = 'binder_therm_prefactor'
       eigenstrain_name = 'thermal_strain'
@@ -619,7 +618,6 @@
     type = ComputeVariableEigenstrain
     block = '800'
     eigen_base = '1 0 0 0 1 0 0 0 1'
-    #eigen_base = '-0.31 0 0 0 1 0 0 0 1'
     args = 'irr'
     prefactor = 'binder_irr_prefactor'
     eigenstrain_name = 'irr_strain'
@@ -657,7 +655,6 @@
   [thermal_strain]
       type = ComputeVariableEigenstrain
       block = '100 200 300 400'
-      #eigen_base = '1 0 0 0 1 0 0 0 1'
       eigen_base = '-0.0577 0 0 0 1 0 0 0 1'
       args = 'temp'
       prefactor = 'therm_prefactor'
@@ -681,7 +678,6 @@
   [irr_strain]
       type = ComputeVariableEigenstrain
       block = '100 200 300 400'
-      #eigen_base = '1 0 0 0 1 0 0 0 1'
       eigen_base = '-0.31 0 0 0 1 0 0 0 1'
       args = 'irr'
       prefactor = 'irr_prefactor'

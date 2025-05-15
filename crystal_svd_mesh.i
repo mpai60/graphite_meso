@@ -31,11 +31,9 @@
     dim = 2
     nx = 16
     ny = 16
-    #xmin = 0
     xmin = 3e+2
     xmax = 4.00e+2
     ymin = 0
-    #ymax = 1.00e+2
     ymax = 0.5e+2
     boundary_id_offset = 800
     subdomain_ids = 800
@@ -57,8 +55,6 @@
     type = BoundingBoxNodeSetGenerator
     input = binder_rm
     new_boundary = 807
-    # bottom_left = '0.75e+2 0 0' 
-    # top_right = '4.0e+2 0.375e+2 0'
     bottom_left = '3.5e+2 0 0' 
     top_right = '4.0e+2 0.375e+2 0'
   []
@@ -79,14 +75,6 @@
     top_right = '4.2e+2 0.45e+2 0'
   []
 
-  # # [binder_inner_bottom]
-  # #   type = SideSetsFromBoundingBoxGenerator
-  # #   input = binder
-  # #   included_boundaries = 815
-  # #   boundary_new = 810
-  # #   bottom_left = '0.7e+2 -0.1e+2 0'
-  # #   top_right = '4.1e+2 0.1e+2 0'
-  # # []
 
   [binder_inner_left]
     type = SideSetsFromBoundingBoxGenerator
@@ -99,17 +87,6 @@
     top_right = '3.6e+2 0.38e+2 0'
   []
 
-  #  [binder_inner_right]
-  #   type = SideSetsFromBoundingBoxGenerator
-  #   input = binder
-  #   included_boundaries = 815
-  #   boundary_new = 811
-  #   bottom_left = '7.49e+2 0.73e+2 0'
-  #   top_right = '7.8e+2 1.52e+2 0'
-  # []
-
-
-
 
 #
 # Crystal
@@ -120,7 +97,6 @@
     nx = 13
     ny = 15
     dim = 2
-    #xmin = 0.75e+2
     xmin = 3.5e+2
     xmax = 4.0e+2
     ymin = 0
@@ -135,7 +111,6 @@
     nx = 13
     ny = 15
     dim = 2
-    #xmin = 0.75e+2
     xmin = 3.5e+2
     xmax = 4.0e+2
     ymin = 0.1875e+2
@@ -145,34 +120,6 @@
     boundary_name_prefix = 'sd2'
   []
   
-  # [crystal_sd3]
-  #   type = GeneratedMeshGenerator
-  #   nx = 13
-  #   ny = 15
-  #   dim = 2
-  #   xmin = 0.75e+2
-  #   xmax = 4.0e+2
-  #   ymin = 1.125e+2 
-  #   ymax = 1.31875e+2
-  #   boundary_id_offset = 300
-  #   subdomain_ids = 300
-  #   boundary_name_prefix = 'sd3'
-  # []
-
-  # [crystal_sd4]
-  #   type = GeneratedMeshGenerator
-  #   nx = 13
-  #   ny = 15
-  #   dim = 2
-  #   xmin = 0.75e+2
-  #   xmax = 4.0e+2
-  #   ymin = 1.31875e+2
-  #   ymax = 1.5e+2
-  #   boundary_id_offset = 400
-  #   subdomain_ids = 400
-  #   boundary_name_prefix = 'sd4'
-  # []
-
   [crystal_stitch]
     type = StitchedMeshGenerator
     inputs = 'crystal_sd1 crystal_sd2'
@@ -193,8 +140,6 @@
     type = SubdomainBoundingBoxGenerator
     input = crystal_subdomain
     block_id = 510
-    # bottom_left = '1e+2 0.175e+2 0' 
-    # top_right = '4.0e+2 0.2e+2 0'
     bottom_left = '3.75e+2 0.175e+2 0' 
     top_right = '4.0e+2 0.2e+2 0'
   []
@@ -203,8 +148,6 @@
     type = BoundingBoxNodeSetGenerator
     input = crack1_subdomain
     new_boundary = crack1_ns
-    # bottom_left = '1e+2 0.175e+2 0' 
-    # top_right = '4.0e+2 0.2e+2 0'
     bottom_left = '3.75e+2 0.175e+2 0' 
     top_right = '4.0e+2 0.2e+2 0'
   []
@@ -242,31 +185,6 @@
     new_boundary = 600
   [] 
 
-  #   [rve_r1]
-  #   type = BlockDeletionGenerator
-  #   block = 610
-  #   input = crack2_nodeset
-  #   new_boundary = 600
-  # [] 
-
-  # [crack3_subdomain]
-  #   type = SubdomainBoundingBoxGenerator
-  #   input = crystal_c2
-  #   block_id = 710
-  #   bottom_left = '1e+2 1.30625e+2 0' 
-  #   top_right = '4.0e+2 1.33125e+2 0'
-  # []
-
-  # [crack3_nodeset]
-  #   type = BoundingBoxNodeSetGenerator
-  #   input = crack3_subdomain
-  #   new_boundary = crack3_ns
-  #   bottom_left = '1e+2 1.30625e+2 0' 
-  #   top_right = '4.0e+2 1.33125e+2 0'
-  # []
-
-
-  
 
 #
 # Defining crack boundaries for contact
@@ -298,39 +216,7 @@
     bottom_left = '0.7e+2 0.012e+2 0'
     top_right = '4.1e+2 0.02e+2 0'
   []
-  
-  # [crack2_lower]
-  #   type = SideSetsFromBoundingBoxGenerator
-  #   input = rve_r1
-  #   included_boundaries = 600
-  #   boundary_new = 611
-  #   bottom_left = '0.7e+2 0.95e+2 0'
-  #   top_right = '4.1e+2 1.113e+2 0'
-  # []
 
-  # [crack3_lower]
-  #   type = SideSetsFromBoundingBoxGenerator
-  #   input = rve_r1
-  #   included_boundaries = 700
-  #   boundary_new = 711
-  #   bottom_left = '0.7e+2 1.25e+2 0'
-  #   top_right = '4.1e+2 1.310e+2 0'
-  # []
-
-  # [crack3_upper]
-  #   type = SideSetsFromBoundingBoxGenerator
-  #   input = rve_r1
-  #   included_boundaries = 700
-  #   boundary_new = 712
-  #   bottom_left = '0.7e+2 1.3312e+2 0'
-  #   top_right = '4.1e+2 1.34e+2 0'
-  # []
-  
-  # [rve_final]
-  #   type = CombinerGenerator
-  #   inputs = 'crystal_c2 crack1_upper crack1_lower crack2_upper' #crack3_lower crack3_upper crack2_lower 
-  # []
-  
   [rve_final]
     type = CombinerGenerator
     inputs = 'crystal_c2 crack1_upper crack1_lower crack2_upper' #crack3_lower crack3_upper crack2_lower 
@@ -357,58 +243,11 @@
   #   #formulation = mortar
   #   model = frictionless
   # []
-#   [bc_300_left]
-#     primary = 303
-#     secondary = 813
-#     penalty = 1e+8
-#     #formulation = mortar
-#     model = glued
-#   []
-#   [bc_400_left]
-#     primary = 403
-#     secondary = 813
-#     penalty = 1e+8
-#     #formulation = mortar
-#     model = glued
-#   []
+
 
 # #
-# # Right side fixtures
+# # Top Fixture 
 # #
-
-#   # [bc_100_right]
-#   #   primary = 101
-#   #   secondary = 811
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-#   # [bc_200_right]
-#   #   primary = 201
-#   #   secondary = 811
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-#   # [bc_300_right]
-#   #   primary = 301
-#   #   secondary = 811
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-#   # [bc_400_right]
-#   #   primary = 401
-#   #   secondary = 811
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-
-# #
-# # Bottom and top fixtures
-# #
-
   [bc_top]
     primary = 202
     secondary = 812
@@ -417,33 +256,6 @@
     model = frictionless
   []
 
-
-# #
-# # Contact within crystal subdomains
-# #
-#   [sd1_sd2]
-#     primary = 102
-#     secondary = 200
-#     penalty = 1e+8
-#     #formulation = mortar
-#     model = glued
-#   []
-
-#   # [sd2_sd3]
-#   #   primary = 202
-#   #   secondary = 300
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-
-#   # [sd3_sd4]
-#   #   primary = 302
-#   #   secondary = 400
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
 
 # #
 # # Mrozowski crack contact
@@ -456,46 +268,8 @@
 #   #    #formulation = mortar
 #   #   model = glued
 #   # []
-#   # [crack2_contact]
-#   #   primary = 612
-#   #   secondary = 611
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-#   # [crack3_contact]
-#   #   primary = 712
-#   #   secondary = 711
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
 
-#   [crack1_contact_bottom]
-#     primary = 511
-#     secondary = 512
-#     #formulation = 'penalty'
-#     penalty = 1e+8
-#     #formulation = mortar
-#     model = glued
-#   []
-#   # [crack2_contact_bottom]
-#   #   primary = 611
-#   #   secondary = 612
-#   #   #formulation = 'penalty'
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued 
-#   # []
-#   # [crack3_contact_bottom]
-#   #   primary = 711
-#   #   secondary = 712
-#   #   #formulation = 'penalty'
-#   #   penalty = 1e+8
-#   #   #formulation = mortar
-#   #   model = glued
-#   # []
-[]  
+[]
 
 
 ##################################################################################
@@ -541,7 +315,7 @@
  
 []
 
-#irr_value = 9
+
 ###################################################################################
 [Functions]
 
@@ -551,8 +325,7 @@
   []
   [irr_def]
     type = ConstantFunction
-    value = ${irr_value}
-    #value = 2
+    value = 2
   []
   [initial_x_def]
     type = ConstantFunction

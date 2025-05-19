@@ -291,8 +291,8 @@
 ###################################################################################
   [./bottom]
     type = DirichletBC
-    #boundary = 'sd1_bottom binder_bottom'
-    boundary = 'sd1_bottom'
+    boundary = 'sd1_bottom binder_bottom'
+    #boundary = 'sd1_bottom'
     variable = disp_y
     value = 0.
   [../]
@@ -301,12 +301,12 @@
 #Dectivate the BC below only for TG2.
 ###################################################################################
 
-  [./top]
-    type = DirichletBC
-    boundary = 'binder_top'
-    variable = disp_y
-    value = 0.
-  [../]
+  # [./top]
+  #   type = DirichletBC
+  #   boundary = 'binder_top'
+  #   variable = disp_y
+  #   value = 0.
+  # [../]
 
   
 []
